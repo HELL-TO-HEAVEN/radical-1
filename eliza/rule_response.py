@@ -10,7 +10,8 @@ from utilities import concat
 def get_rule(rule_string_format):
     return {
         # tuple(k.split()): [line.split() for line in v]
-        tuple(cut(k)): [cut(line) for line in v]
+        # tuple(cut(k)): [cut(line) for line in v]
+        tuple([i for i in cut(k) if i.strip()]): [cut(line) for line in v]  # modified
         for k, v in rule_string_format.items()
     }
 
