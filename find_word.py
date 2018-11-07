@@ -23,11 +23,11 @@ jieba.suggest_freq(('八', '下'), True)  # 八下
 sentence = '提手旁，右边一个是'  rule three + rule four
 sentence = '提字旁，加个是'  rule three + rule four
 sentence = '穴字头音字底是什么' rule four
-
+sentence = '牛字拼起来怎么读' ？
 sentence = '女和为' ？
 
-# sentence = '㵘的拼音'  rule five
-# sentence = '六安的六怎么读？'  rule five
+# sentence = '㵘字的拼音'  rule five   # 字的问题  todo
+# sentence = '六安的六字怎么读？'  rule five   # 字的问题  todo
 
 # sentence = '㵘怎么读'  rule six
 
