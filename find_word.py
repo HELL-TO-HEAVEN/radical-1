@@ -1,6 +1,6 @@
 import re
 from pypinyin import pinyin
-from load_dict import word_component_dict, find_num, number_dict, word_radical_dict
+from load_dict import word_component_dict, find_num, number_dict, word_radical_dict, zi_radical_dict
 
 
 # 中文构字法
@@ -21,46 +21,9 @@ from load_dict import word_component_dict, find_num, number_dict, word_radical_d
 # test
 import jieba
 import jieba.posseg as pseg
-jieba.load_userdict(['左 f'])
+jieba.load_userdict(['左 f', '口 n', '日 n'])
 jieba.suggest_freq(('八', '下'), True)  # 八下
 jieba.suggest_freq(('一个','包'), True)
-
-# sentence = '左边是人，右边是人'  rule one
-# sentence = '上八下白怎么读？'   rule one
-
-# sentence = '上下结构八白怎么读'  rule two
-
-# sentence = '三个人怎么读？'  rule three
-# sentence = '左边一个人 右边一个人'  rule three
-
-# sentence = '右边是个草字'
-# sentence = '右边是草字'
-
-# sentence = '草字头 穴字头 宝盖头 提手旁 提字旁 走之底 之字底 ...' top rule
-
-
-# Baidu Normal test:
-# sentence = '草字头加内'
-# sentence = '草字头下面加内念什么'
-# sentence = '草字头加口再加内读什么'
-# sentence = '一个走之底加一个加怎么读'
-# sentence = '女和为加一起念什么?'
-# sentence = '牛和字拼起来怎么读'
-# sentence = '女和为念什么'
-# sentence = '草与和念什么'
-# sentence = '一个女字旁和一个为念什么?'
-
-# sentence = '前面一个包，后面是为'
-# sentence = '上面是老，下面一个美'
-
-# sentence = '㵘的拼音'  rule five
-# sentence = '又双叒叕的叕怎么读？'  rule five
-
-# sentence = '㵘怎么读'  rule six
-
-
-# word_list = list(pseg.cut(sentence, HMM=False))
-# print(word_list)
 
 
 def get_word(input_sentence):
@@ -70,20 +33,31 @@ def get_word(input_sentence):
     new_sentence = input_sentence
 
     # top rules
+    complete_str_top = ''
     match_word = re.findall('|'.join(list(word_radical_dict.keys())), new_sentence)
     if len(match_word):
-        complete_str_ = ''
         for word in match_word:
-            complete_str_ += word_radical_dict.get(word)
+            complete_str_top += word_radical_dict.get(word)
+            new_sentence = new_sentence.replace(word, ' ')
+
+    complete_str_top_zi = ''
+    match_word_zi = re.findall('|'.join(list(zi_radical_dict.keys())), new_sentence)
+    if len(match_word_zi):
+        for word in match_word_zi:
+            complete_str_top_zi += zi_radical_dict.get(word)
             new_sentence = new_sentence.replace(word, ' ')
 
     word_list = list(pseg.cut(new_sentence, HMM=False))
     words = [i.word for i in word_list]
     flags = [i.flag for i in word_list]
-    empty_ = [i for i,value in enumerate(words) if value in [' ']]
-    if len(empty_):
-        words.pop(empty_[0])
-        flags.pop(empty_[0])
+    empty_index = [i for i,value in enumerate(words) if value in [' ']]
+    if len(empty_index):
+        coun_t = 0
+        for i in empty_index:
+            if flags[i-1-coun_t] in ['m','f']:
+                words.pop(i-1-coun_t)
+                flags.pop(i-1-coun_t)
+                coun_t += 1
 
     special_case1 = ['是', '为']
     need_pop_index = []
@@ -109,36 +83,47 @@ def get_word(input_sentence):
     special_case3 = '加'
     jia_index = [index for index,word in enumerate(words) if word == special_case3]
     if len(jia_index):
-        for jia_ in jia_index:
-            if jia_+1 < word_number:
-                if flags[jia_+1] not in ['m','r']:
-                    words = words[:jia_+1] + ['一个'] + words[jia_+1:]
-                    flags = flags[:jia_+1] + ['m'] + flags[jia_+1:]
+        count_ = 0
+        for index, jia_ in enumerate(jia_index):
+            if jia_+1 < word_number and words[jia_+1] != ' ':
+                new_index = jia_+1 + count_
+                if flags[new_index] not in ['m','r']:
+                    count_ += 1
+                    words = words[:new_index] + ['一个'] + words[new_index:]
+                    flags = flags[:new_index] + ['m'] + flags[new_index:]
 
-    print(words)
-    print(flags)
+    print('words: {x}'.format(x=words))
+    print('flags: {x}'.format(x=flags))
 
     # using the rules of pos
+    complete_str_f = ''
+    complete_str_uj = ''
+    complete_str_q = ''
+    complete_str_c = ''
+
 
     if 'f' in flags:
         f_index = [i for i, v in enumerate(flags) if v == 'f']
         if len(f_index) > 1:
-            complete_str_ = ''
+            complete_str_f = ''
             for f_each in f_index:
-                if flags[f_each + 1] not in ['q', 'm']:
-                # For sentence contain the pos of 'f' and 'q'/'m', use rule three.
-                    # rule one: f + . f + .
-                    complete_str_ += words[f_each + 1][0]
+                if flags[f_each + 1] not in ['q']:
+                    # For sentence contain the pos of 'f' and 'q'/'m', use rule three.
+                    if flags[f_each + 1]=='m' and len(words[f_each + 1])==2:
+                        pass
+                    else:
+                        # rule one: f + . f + .
+                        complete_str_f += words[f_each + 1][0]
         else:
-            if flags[f_index[0]+1] not in ['q','m']:
+            if flags[f_index[0]+1] not in ['q','m'] and flags[f_index[0]+2] not in ['q','m']:
             # rule two: f + n  number of f decide the number of '.'
                 index_ = flags.index('f')
-                complete_str_ = ''.join(words[index_+2:])[:len(words[index_])]
+                complete_str_f = ''.join(words[index_+2:])[:len(words[index_])]
 
-    # rule three: q + .  multiple
+    # rule three: q + . /m + . multiple
     if 'q' in flags or 'm' in flags:
         if 'q' not in flags:
-            str_dict = {}
+            str_q = ''
             m_word = words[flags.index('m')]
             if len(m_word) == 2 and m_word not in ['一起']:
                 for index, i in enumerate(flags):
@@ -149,12 +134,12 @@ def get_word(input_sentence):
                             numbers_ = int(numbers_[0])
                         except:
                             numbers_ = number_dict.get(numbers_[0])
-                        str_dict[nex_word] = numbers_
+                        str_q += nex_word * numbers_
 
         else:
-            str_dict = {}
+            str_q = ''
             for index, i in enumerate(flags):
-                if i == 'q':
+                if i == 'q' and words[flags.index('q')+1] != ' ':
                     nex_word = words[index + 1][0]
                     if flags[index - 1] == 'm':
                         number_ = find_num(words[index - 1])
@@ -162,33 +147,39 @@ def get_word(input_sentence):
                             number = int(number_[0])
                         except:
                             number = number_dict.get(number_[0])
-                        str_dict[nex_word] = number
+                        str_q += nex_word * number
                     else:
-                        str_dict[nex_word] = 1
+                        str_q += nex_word * 1
 
-        complete_str_ = ''.join([key*value for key,value in str_dict.items()])
+        complete_str_q = str_q
 
     if 'uj' in flags:
         # rule five:  uj + . + r + v/. + uj + n/v
         index_ = flags.index('uj')
-        if flags[index_+2] == 'r' and flags[index_+3] == 'v':
-            complete_str_ = ''.join(words[:index_])
+        flags_number = len(flags)
+        if index_+3 < flags_number:
+            if flags[index_+2] == 'r' and flags[index_+3] == 'v':
+                complete_str_uj = words[index_+1]
         elif flags[index_+1] in ['n','v']:
-            complete_str_ = ''.join(words[:index_])
+            complete_str_uj = ''.join(words[:index_])
 
     if 'c' in flags:
         c_index = flags.index('c')
-        if flags[c_index-1] != 'p' or flags[c_index+1] != 'm':
-            complete_str_ = ''.join(list(re.findall('(.?)和(.?)|(.?)与(.?)',new_sentence)[0]))
+        if words[c_index-1] != ' ':
+            if flags[c_index-1] != 'p' or flags[c_index+1] != 'm':
+                complete_str_c = ''.join(list(re.findall('(.?)和(.?)|(.?)与(.?)',new_sentence)[0]))
 
-    if complete_str_:
+    print('complete_str_top: {a} \ncomplete_str_top_zi: {b} \ncomplete_str_f: {x} \ncomplete_str_q: {y} \ncomplete_str_uj: {z} \ncomplete_str_c: {e}'.format(a=complete_str_top,b=complete_str_top_zi, x=complete_str_f,y=complete_str_q, z=complete_str_uj, e=complete_str_c))
+    complete_str_list = [i for i in [complete_str_top, complete_str_top_zi, complete_str_f, complete_str_q, complete_str_uj, complete_str_c] if len(i)]
+    complete_str_ = ''.join(complete_str_list)
+    if not complete_str_:
         # rule six:  . + r(multi) + v
         if 'r' in flags:
             index_ = flags.index('r')
             if flags[index_+1] == 'v':
                 complete_str_ = ''.join(words[:index_])
 
-    return complete_str_
+    return complete_str_.replace(' ','')
 
 
 def get_pinyin(input_complete_word):

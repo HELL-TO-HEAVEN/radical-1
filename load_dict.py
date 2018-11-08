@@ -1,7 +1,9 @@
 import re
 from pypinyin import load_phrases_dict
 import pandas as pd
-dictionary_path = 'D:\\my_github\\chaizi\\'
+import os
+
+dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\'
 
 
 # Add new word!!!
@@ -56,10 +58,12 @@ def get_word_radical():
             for word in words_:
                 word_c_l = re.findall('([^，].*)（(.*)）',word)[0]
                 word_radical_dict[word_c_l[0]] = word_c_l[1]
-    return word_radical_dict
+
+    zi_radical_dict = {key[:2]:value for key,value in word_radical_dict.items() if len(key) > 1 and key[1]=='字'}
+    return word_radical_dict, zi_radical_dict
 
 
-word_radical_dict = get_word_radical()
+word_radical_dict, zi_radical_dict = get_word_radical()
 
 
 def find_num(input):
