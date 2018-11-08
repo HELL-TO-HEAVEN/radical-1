@@ -54,6 +54,7 @@ rule_responses = {
     '?*x怎么念?*y':['Just for test 读!!!'],
     '?*x念什么?*y': ['Just for test 读!!!'],
     '?*x拼音?*y':['Just for test 读!!!'],
+    '?*x什么字?*y':['Just for test 读!!!'],
     '?*x': ['很有趣', '请继续', '我不太确定我很理解你说的, 能稍微详细解释一下吗?']
 }
 
