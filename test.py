@@ -1,9 +1,7 @@
-from find_word import get_pinyin
 # sentence = '左边是人，右边是人'  # rule one
 # sentence = '上八下白怎么读？'
 
-# sentence = '上下结构八白怎么读'  # rule two
-
+# sentence = '入下面一个工怎么读？'  # rule two + rule three
 
 # sentence = '三个人怎么读？'  # rule three
 # sentence = '两个呆在一起念什么'
@@ -70,13 +68,13 @@ from find_word import get_pinyin
 # sentence = '龘这个字怎么读？'
 # sentence = '犇骉鱻羴麤飝龘怎么念'
 # sentence = '㒶怎么读？'
-sentence = '又又又又支怎么读？'
+# sentence = '又又又又支怎么读？'
 
+sentence = '一个口字里面有一个八和一个口字是什么意思啊'
 # import jieba.posseg as pseg
 # word_list = list(pseg.cut(sentence, HMM=False))
 # print(word_list)
 
-
-print("Out put: \'{x}\'".format(x=get_pinyin(sentence)))
-
+from find_word import get_word
+print("Out put: \'{x}\'".format(x=get_word(sentence)))
 
