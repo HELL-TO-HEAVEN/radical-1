@@ -1,29 +1,37 @@
 import re
-from pypinyin import pinyin
-from load_dict import word_component_dict, find_num, number_dict, word_radical_dict, zi_radical_dict
-
-
-# 中文构字法
-# 前后上下左右
-
-# rule:
-# 量词/数词/方位词 + 单字 (该单字为偏旁部首)
-# 数词 = 数词+量词
-
-# notes:
-# 1.若方位词组词，则规则失效
-# 示例：
-# '上海下士念什么'
-# 2.无法区分拆字/词组
-# 3.无法保证拆字组成的顺序
-
-
-# test
+from pypinyin import pinyin, load_phrases_dict
+from add_new_word_dict import new_word_pinyin_dict, new_word_split_dict
+import os
+from sklearn.externals import joblib
 import jieba
 import jieba.posseg as pseg
-jieba.load_userdict(['左 f', '口 n', '日 n'])
+jieba.load_userdict(['左 f', '口 n', '日 n','月 n', '年 n','一起 s','米 n'])
 jieba.suggest_freq(('八', '下'), True)  # 八下
 jieba.suggest_freq(('一个','包'), True)
+load_phrases_dict(new_word_pinyin_dict)
+
+
+dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\dict\\'
+word_component_dict, word_radical_dict, zi_radical_dict = joblib.load(dictionary_path+'chaizi_dict')
+
+word_component_dict.update(new_word_split_dict)
+
+
+def find_num(input):
+    result = re.findall('[一二两俩三四五六]|[0-9]',input)
+    return result
+
+
+number_dict = {
+    '一':1,
+    '二':2,
+    '两':2,
+    '俩':2,
+    '三':3,
+    '四':4,
+    '五':5,
+    '六':6
+}
 
 
 def get_word(input_sentence):
@@ -31,6 +39,8 @@ def get_word(input_sentence):
     for i in remove_str_list:
         input_sentence = input_sentence.replace(i, '')
     new_sentence = input_sentence
+
+    new_sentence = re.sub(r'加起来|拼起来|摞起来|合一起|合在一起',' ', new_sentence)
 
     # top rules
     complete_str_top = ''
@@ -50,14 +60,6 @@ def get_word(input_sentence):
     word_list = list(pseg.cut(new_sentence, HMM=False))
     words = [i.word for i in word_list]
     flags = [i.flag for i in word_list]
-    empty_index = [i for i,value in enumerate(words) if value in [' ']]
-    if len(empty_index):
-        coun_t = 0
-        for i in empty_index:
-            if flags[i-1-coun_t] in ['m','f']:
-                words.pop(i-1-coun_t)
-                flags.pop(i-1-coun_t)
-                coun_t += 1
 
     special_case1 = ['是', '为']
     need_pop_index = []
@@ -85,12 +87,27 @@ def get_word(input_sentence):
     if len(jia_index):
         count_ = 0
         for index, jia_ in enumerate(jia_index):
-            if jia_+1 < word_number and words[jia_+1] != ' ':
+            if jia_+1 < word_number and words[jia_+1] not in [' ','一起','起来']:
                 new_index = jia_+1 + count_
                 if flags[new_index] not in ['m','r']:
                     count_ += 1
                     words = words[:new_index] + ['一个'] + words[new_index:]
                     flags = flags[:new_index] + ['m'] + flags[new_index:]
+
+        if words[words.index(special_case3)-1] not in [' '] and words[words.index(special_case3)+1] not in ['一起','起来'] and flags[words.index(special_case3)-1] not in ['f']:
+            index_jia = words.index(special_case3)-1
+            words = words[:index_jia] + ['一个'] + words[index_jia:]
+            flags = flags[:index_jia] + ['m'] + flags[index_jia:]
+
+
+    empty_index = [i for i,value in enumerate(words) if value in [' ']]
+    if len(empty_index):
+        coun_t = 0
+        for i in empty_index:
+            if flags[i-1-coun_t] in ['m','f']:
+                words.pop(i-1-coun_t)
+                flags.pop(i-1-coun_t)
+                coun_t += 1
 
     print('words: {x}'.format(x=words))
     print('flags: {x}'.format(x=flags))
@@ -125,7 +142,7 @@ def get_word(input_sentence):
         if 'q' not in flags:
             str_q = ''
             m_word = words[flags.index('m')]
-            if len(m_word) == 2 and m_word not in ['一起']:
+            if len(m_word) == 2:
                 for index, i in enumerate(flags):
                     if i == 'm':
                         nex_word = words[index + 1][0]
@@ -163,44 +180,57 @@ def get_word(input_sentence):
         elif flags[index_+1] in ['n','v']:
             complete_str_uj = ''.join(words[:index_])
 
-    if 'c' in flags:
+    if 'c' in flags and words[flags.index('c')] not in ['并','或']:
         c_index = flags.index('c')
         if words[c_index-1] != ' ':
             if flags[c_index-1] != 'p' or flags[c_index+1] != 'm':
-                complete_str_c = ''.join(list(re.findall('(.?)和(.?)|(.?)与(.?)',new_sentence)[0]))
+                complete_str_c = ''.join(list(re.findall('(.?)和(.?)',new_sentence)[0]))
 
     print('complete_str_top: {a} \ncomplete_str_top_zi: {b} \ncomplete_str_f: {x} \ncomplete_str_q: {y} \ncomplete_str_uj: {z} \ncomplete_str_c: {e}'.format(a=complete_str_top,b=complete_str_top_zi, x=complete_str_f,y=complete_str_q, z=complete_str_uj, e=complete_str_c))
     complete_str_list = [i for i in [complete_str_top, complete_str_top_zi, complete_str_f, complete_str_q, complete_str_uj, complete_str_c] if len(i)]
     complete_str_ = ''.join(complete_str_list)
+
     if not complete_str_:
         # rule six:  . + r(multi) + v
         if 'r' in flags:
+            flags_number = len(flags)
             index_ = flags.index('r')
-            if flags[index_+1] == 'v':
-                complete_str_ = ''.join(words[:index_])
+            if index_+1 < flags_number:
+                if flags[index_+1] == 'v':
+                    complete_str_ = ''.join(words[:index_])
 
+            if flags[index_-1] == 'v':
+                complete_str_ = ''.join(words[:index_-1])
     return complete_str_.replace(' ','')
 
 
-def get_pinyin(input_complete_word):
+def get_pinyin(input_sentence):
+    try:
+        input_complete_word = get_word(input_sentence)
+    except:
+        return "Sorry, I don't know!"
+
     if len(input_complete_word) > 1:
-        out_word = word_component_dict.get(input_complete_word)  # 拆字
-        out_cz_pinyin = pinyin(input_complete_word)  # 词组
+        out_word = word_component_dict.get(input_complete_word)  # 拆字 - 单字
         if out_word:
             out_pinyin = pinyin(out_word)[0][0]
-            output = out_word + ': ' + out_pinyin
-            print(output)
-        elif out_cz_pinyin:
-            output = input_complete_word + ': ' + ' '.join([le for br in out_cz_pinyin for le in br])
-            print(output)
+            if out_pinyin != out_word:
+                output = out_word + ': ' + out_pinyin
+            else:
+                return 'I don\'t know how to pronounce the word!'
+        else:
+            out_cz_pinyin = pinyin(input_complete_word)  # 词组
+            out_cz_pinyin = ' '.join([le for br in out_cz_pinyin for le in br])
+            if out_cz_pinyin.replace(' ','') != input_complete_word:
+                output = input_complete_word + ': ' + out_cz_pinyin
+            else:
+                return 'I don\'t know how to pronounce the word!'
     else:
         out_pinyin = pinyin(input_complete_word)[0][0]  # 单字
         if out_pinyin != input_complete_word:
             output = input_complete_word + ': ' + out_pinyin
-            print(output)
         else:
-            print('I don\'t know how to pronounce the word!')
+            return 'I don\'t know how to pronounce the word!'
 
-
-# get_pinyin()
+    return output
 

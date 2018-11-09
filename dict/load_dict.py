@@ -1,22 +1,10 @@
 import re
-from pypinyin import load_phrases_dict
 import pandas as pd
 import os
-
-dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\'
-
-
-# Add new word!!!
-new_word_split_dict = {'八白': '㒶',
-                       '口口口口':'㗊',
-                        '水水水水':'㵘',
-                        '土土土土':'㙓',
-                       '又又又又支':'敠'}
-new_word_pinyin_dict = {'㒶': [['gōng']],
-                        '敠': [['duō'], ['què']]}
+dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\dict\\'
 
 
-def update_dict(split, pinyin):
+def update_dict():
     with open(dictionary_path + 'chaizi-jt.txt', encoding='utf-8') as fi:
         jt_word = fi.readlines()
     with open(dictionary_path + 'chaizi-ft.txt', encoding='utf-8') as fi:
@@ -31,13 +19,10 @@ def update_dict(split, pinyin):
         new_word.remove(new_word[0])
         for i in range(len(new_word)):
             word_dict[new_word[i].replace(' ','')] = values_
-
-    word_dict.update(split)
-    load_phrases_dict(pinyin)
     return word_dict
 
 
-word_component_dict = update_dict(new_word_split_dict, new_word_pinyin_dict)
+word_component_dict = update_dict()
 
 
 def get_word_radical():
@@ -66,22 +51,5 @@ def get_word_radical():
 word_radical_dict, zi_radical_dict = get_word_radical()
 
 
-def find_num(input):
-    result = re.findall('[一二三四五六]|[0-9]',input)
-    return result
-
-
-number_dict = {
-    '一':1,
-    '二':2,
-    '两':2,
-    '俩':2,
-    '三':3,
-    '四':4,
-    '五':5,
-    '六':6
-}
-
-
-
-
+from sklearn.externals import joblib
+joblib.dump([word_component_dict, word_radical_dict, zi_radical_dict], dictionary_path + 'chaizi_dict')

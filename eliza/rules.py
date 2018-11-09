@@ -50,10 +50,11 @@ rule_responses = {
     '?*x可能?*y': ['你看起来不太确定'],
     '?*x他们是?*y吗？': ['你觉得他们可能不是?y？'],
     '?*x怎么读?*y':['Just for test 读!!!'],
-    '?*x读音?*y':['Just for test 读!!!'],
     '?*x怎么念?*y':['Just for test 读!!!'],
+    '?*x读什么?*y': ['Just for test 读!!!'],
     '?*x念什么?*y': ['Just for test 读!!!'],
     '?*x拼音?*y':['Just for test 读!!!'],
+    '?*x读音?*y': ['Just for test 读!!!'],
     '?*x什么字?*y':['Just for test 读!!!'],
     '?*x': ['很有趣', '请继续', '我不太确定我很理解你说的, 能稍微详细解释一下吗?']
 }

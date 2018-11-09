@@ -5,6 +5,23 @@ https://github.com/saigyo/common-chinese-radicals
 https://github.com/fortyMiles/PAIP-Python/tree/master/eliza  
 
 
+## 中文构字法
+前后左右，上下里外  
+
+
+## rule
+量词/数词/方位词 + 单字 (该单字为偏旁部首)  
+数词 = 数词+量词  
+
+> notes:
+1.若方位词/special_case3组词，则规则失效  
+示例：  
+'上海下士念什么'  
+'人加工念什么'  
+2.无法区分拆字/词组  
+3.无法保证拆字组成的顺序  
+
+
 chaizi-jt.txt/chaizi-ft.txt
 问题字：
 □	目 仑  
