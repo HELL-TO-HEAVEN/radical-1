@@ -57,7 +57,7 @@ https://www.mdbg.net/chinese/dictionary?page=radicals
 百度找字，解析其边界及内部原理：  
 边界 - 即哪些问法，它可以查到，换一种问法却查不到？）  
 原理 - 貌似也是规则实现...  
-![baidu_chaizi](https://github.com/bifeng/chaizi/tree/master/dict/baidu_chaizi.jpg)
+![baidu_chaizi](https://github.com/bifeng/chaizi/tree/master/dict/baidu_chaizi.png)
 
 搜狗拼音输入法
 
