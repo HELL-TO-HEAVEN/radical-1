@@ -9,7 +9,7 @@ new_word_split_dict = {'八白': '㒶',
                        '又又又又支':'敠'}
 
 
-new_word_pianpang_dict = {'利刀旁':'刂','禾字旁':'禾'}
+# new_word_pianpang_dict = {'利刀旁':'刂','禾字旁':'禾'}
 
 
 new_word_pinyin_dict = {'㒶': [['gōng']],

@@ -9,4 +9,5 @@ print("Out put: \'{x}\'".format(x=get_pinyin(sentence)))
 '上下边是人念啥'  # baidu ok
 '上下结构都是乂念什么'
 '外面是口,里面是四面,八方这两个字是什么啊'
+'一个草字头两个口地下一个焦去四点底念什么'
 

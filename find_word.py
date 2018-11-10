@@ -240,12 +240,7 @@ def get_pinyin(input_sentence):
             else:
                 return 'I don\'t know how to pronounce the word!'
         else:
-            out_cz_pinyin = pinyin(input_complete_word)  # 词组
-            out_cz_pinyin = ' '.join([le for br in out_cz_pinyin for le in br])
-            if out_cz_pinyin.replace(' ','') != input_complete_word:
-                output = '是' + input_complete_word + '吗？ 它的读音: ' + out_cz_pinyin
-            else:
-                return 'I don\'t know how to pronounce the word!'
+            return 'I can\'t find it in the dictionary!'
     else:
         out_pinyin = pinyin(input_complete_word)[0][0]  # 单字
         if out_pinyin != input_complete_word:
