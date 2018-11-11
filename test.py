@@ -70,11 +70,10 @@
 # sentence = '㒶怎么读？'
 # sentence = '又又又又支怎么读？'
 
-sentence = '一个口字里面有一个八和一个口字是什么意思啊'
 # import jieba.posseg as pseg
 # word_list = list(pseg.cut(sentence, HMM=False))
 # print(word_list)
 
-from find_word import get_word
-print("Out put: \'{x}\'".format(x=get_word(sentence)))
+# from find_word import get_word
+# print("Out put: \'{x}\'".format(x=get_word(sentence)))
 

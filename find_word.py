@@ -1,6 +1,6 @@
 import re
 from pypinyin import pinyin, load_phrases_dict
-from add_new_word_dict import new_word_pinyin_dict, new_word_split_dict, new_word_pianpang_dict
+from add_new_word_dict import new_word_pinyin_dict, new_word_split_dict#, new_word_pianpang_dict
 import os
 from sklearn.externals import joblib
 import jieba
@@ -15,7 +15,7 @@ dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\dict\\'
 word_component_dict, word_radical_dict, zi_radical_dict = joblib.load(dictionary_path+'chaizi_dict')
 
 word_component_dict.update(new_word_split_dict)
-word_radical_dict.update(new_word_pianpang_dict)
+# word_radical_dict.update(new_word_pianpang_dict)
 
 
 def find_num(input):
@@ -150,7 +150,7 @@ def get_word(input_sentence):
                 index_ = flags.index('f')
                 complete_str_f = ''.join(words[index_+2:])[:len(words[index_])]
             if words[f_index[0]-1] in [' '] and flags[f_index[0]+1] not in ['q','m']:
-                complete_str_f =  words[f_index[0]+1]
+                complete_str_f = words[f_index[0]+1]
             if words[f_index[0]-1] not in [' ']:
             # rule two addition:
                 complete_str_f = words[f_index[0]-1]
@@ -205,7 +205,7 @@ def get_word(input_sentence):
             c_index = flags.index('c')
             if words[c_index-1] != ' ':
                 if flags[c_index-1] != 'p' or flags[c_index+1] != 'm':
-                    complete_str_c = ''.join(list(re.findall('(.?)和(.?)',new_sentence)[0]))
+                    complete_str_c = words[c_index-1] + words[c_index+1]
 
     print('complete_str_top: {a} \ncomplete_str_top_zi: {b} \ncomplete_str_f: {x} \ncomplete_str_q: {y} \ncomplete_str_uj: {z} \ncomplete_str_c: {e}'.format(a=complete_str_top,b=complete_str_top_zi, x=complete_str_f,y=complete_str_q, z=complete_str_uj, e=complete_str_c))
     complete_str_list = [i for i in [complete_str_top, complete_str_top_zi, complete_str_f, complete_str_q, complete_str_uj, complete_str_c] if len(i)]

@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 import os
-dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\dict\\'
+dictionary_path = os.path.split(os.path.realpath(__file__))[0] + '\\'
 
 
 def update_dict():
