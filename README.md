@@ -32,13 +32,7 @@
 
 
 ## rule
-1. 正则匹配 - 偏旁部首的读法（如匹配句子中的'草字头'）
-2. 方位词 - 提取方位词后面的关键字。若方位词后面为量词/数词，则进入规则3
-3. 量词/数词 - 提取量词/数词后面的关键字，其中数词为两个字
-4. 结构助词 - 提取结构助词后面的关键字  
-5. 连词 - 提取连词左右两边的关键字
-6. 尽量使前面的规则相互独立，最终拼接为该字所有偏旁部首的字符串
-7. 代词 - 若规则6返回的字符串为空，则提取代词前面所有的关键字
+[Rules](https://github.com/bifeng/radical/blob/master/Rules.md)
 
 
 #### drawback of rules:
@@ -94,7 +88,7 @@
    what's the correlation between the word embedding and radical embedding?
 
 3. Source of radical information
-  https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
+    https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
 
   http://www.archchinese.com/
 
