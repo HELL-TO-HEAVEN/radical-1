@@ -45,7 +45,7 @@ def get_word(input_sentence):
         input_sentence = input_sentence.replace(i, '')
     new_sentence = input_sentence
 
-    new_sentence = re.sub(r'结构|排列|加起来|拼起来|摞起来|合一起|合在一起|都是',' ', new_sentence)
+    new_sentence = re.sub(r'结构|排列|组合|加起来|拼起来|摞起来|合一起|合在一起|都是',' ', new_sentence)
 
     # top rules
     complete_str_top = ''
