@@ -1,0 +1,28 @@
+t_rule_domain
+HEAD:
+读
+SBV:
+读音
+
+
+
+ATT -> ADV
+
+
+
+#㵘字的读音是什么
+#上面一个老下面一个日读什么  problem?
+
+
+
+
+t_rule_domain
+VOB:
+读
+
+
+ATT
+
+
+#上面一个老，下面一个日，读什么  problem?
+
