@@ -81,7 +81,8 @@
 
    Unsupervised clustering of Chinese characters by radical similarity
    https://github.com/alenarr/zi-space 
-   ​    
+   Radical Analysis Network for Learning Hierarchies of Chinese Characters
+   https://github.com/JianshuZhang/RAN
 
 2. How to separate chinese word to radical?
 

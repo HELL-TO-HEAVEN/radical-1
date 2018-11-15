@@ -3,9 +3,8 @@
 
 # sentence = '入下面一个工怎么读？'  # rule two + rule three
 
-# sentence = '三个人怎么读？'  # rule three
+# sentence = '三个牛怎么读？'  # rule three
 # sentence = '两个呆在一起念什么'
-# sentence = '左边一个人 右边一个人怎么念'
 
 
 # sentence = '前面一个“鱼”,后面一个“包”是什么字啊'
@@ -59,7 +58,6 @@
 
 
 # sentence = '吉力念什么?'
-# sentence = '又双叒叕怎么读？'
 # sentence = '又双叒叕的叕怎么读？'  # rule five
 
 # sentence = '上面一个老下面一个日读什么'
@@ -85,3 +83,5 @@ sentence = '一个"多"字加一个走之底,是什么字'
 sentence = '草字头下面一个开右边一个利刀旁是什么字'
 sentence = '一个草字头,下面一个豕,右边一个生是什么字'
 sentence = '上下结构“功夫”是什么字'
+sentence = '左边一个方,右边一个人,人下两点什么字'  # 於
+sentence = '上面一个文和一个武，下面一个贝，什么字'
