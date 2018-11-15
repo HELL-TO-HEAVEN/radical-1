@@ -78,6 +78,7 @@
 
 # todo untest
 sentence = '㵘读音是什么'
+sentence = '㵘字的读音是什么'
 sentence = '“㵘”字怎么读'
 sentence = '一个"多"字加一个走之底,是什么字'
 sentence = '草字头下面一个开右边一个利刀旁是什么字'
