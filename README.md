@@ -95,26 +95,26 @@
 
     Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
 
-http://babelstone.co.uk/CJK/index.html
+   http://babelstone.co.uk/CJK/index.html
 
-http://www.babelstone.co.uk/Fonts/PUA.html
+   http://www.babelstone.co.uk/Fonts/PUA.html
 
-https://github.com/cjkvi/cjkvi-ids
+   https://github.com/cjkvi/cjkvi-ids
 
-https://github.com/LingDong-/rrpl
+   https://github.com/LingDong-/rrpl
 
-http://www.chise.org/ids/ - 繁体字
-http://www.chise.org/ids-find/ - IDS检索
-https://github.com/mskala/chise-ids
+   http://www.chise.org/ids/ - 繁体字  
+   http://www.chise.org/ids-find/ - IDS检索  
+   https://github.com/mskala/chise-ids  
 
-http://www.zdic.net/z/zxjs/ - IDS检索
+   http://www.zdic.net/z/zxjs/ - IDS检索
 
-http://zisea.com/zslf.htm - 两分查字-将字拆为首尾两部
+   http://zisea.com/zslf.htm - 两分查字-将字拆为首尾两部
 
-http://zhs.glyphwiki.org/wiki/GlyphWiki:%E9%A6%96%E9%A1%B5
-http://glyphwiki.org/search/hwr.html - 手书汉字检索
+   http://zhs.glyphwiki.org/wiki/GlyphWiki:%E9%A6%96%E9%A1%B5  
+   http://glyphwiki.org/search/hwr.html - 手书汉字检索
 
-Inspired by: http://bangumi.tv/group/topic/341210
+   Inspired by: http://bangumi.tv/group/topic/341210  
 
 4. Source of radical information
    https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
@@ -122,9 +122,9 @@ Inspired by: http://bangumi.tv/group/topic/341210
 
    http://www.unicode.org/
 
-  [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
+   [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
 
-  https://www.mdbg.net/chinese/dictionary?page=radicals
+   https://www.mdbg.net/chinese/dictionary?page=radicals
 
 ##### other
 百度找字，解析其边界及内部原理：  
