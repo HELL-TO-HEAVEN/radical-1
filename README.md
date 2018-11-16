@@ -70,11 +70,14 @@
 
 
 #### useful information
-##### 中文构字法
-前后左右，上下里外  
-
 ##### radical(偏旁/部首)
-
+```
+中文构字法
+一般地说，部首是表义的偏旁。部首也是偏旁，但偏旁不一定是部首，偏旁与部首是整体与部分的关系。
+汉字绝大部分是形声字，由形旁和声旁组成，所以，“偏旁”，主要包含形旁和声旁两类。如“语”字，由“言”和“吾”两个偏旁组成；“盆”字由“分”和“皿字底”两个偏旁组成；“问”字由“门字框”和“口”两个偏旁组成。
+识字部首是表义偏旁、构字部件，检字部首是某一类字字形上的共同标志。
+识字部首有“旁”、“头”、“底”、“框”、“心”五种类型，每一类型都有具体名称，如“言字旁（讠）”、“雨字头”（雨）、“马字底”（马）、“同字框（冂）”等，而检字部首统称为“某部”，如“丶部”、“亻部”、“亠部”等。
+```
 1. Each chinese radical has its special meaning, it connect every word with the same radical. Even though, there some radical connection with itself.
 
    Such as, there is connection between '罒' and '网', '罒  目', '灬  火'... 
@@ -92,6 +95,8 @@
 
     Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
 
+http://babelstone.co.uk/CJK/index.html
+
 http://www.babelstone.co.uk/Fonts/PUA.html
 
 https://github.com/cjkvi/cjkvi-ids
@@ -99,13 +104,23 @@ https://github.com/cjkvi/cjkvi-ids
 https://github.com/LingDong-/rrpl
 
 http://www.chise.org/ids/ - 繁体字
+http://www.chise.org/ids-find/ - IDS检索
+https://github.com/mskala/chise-ids
+
+http://www.zdic.net/z/zxjs/ - IDS检索
+
+http://zisea.com/zslf.htm - 两分查字-将字拆为首尾两部
+
+http://zhs.glyphwiki.org/wiki/GlyphWiki:%E9%A6%96%E9%A1%B5
+http://glyphwiki.org/search/hwr.html - 手书汉字检索
 
 Inspired by: http://bangumi.tv/group/topic/341210
 
 4. Source of radical information
    https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
-
    https://en.wikipedia.org/wiki/Kangxi_radical
+
+   http://www.unicode.org/
 
   [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
 
@@ -120,13 +135,12 @@ Inspired by: http://bangumi.tv/group/topic/341210
 搜狗拼音输入法：  
 ​	居然可以打拼音声调和偏旁部首...
 
+百度汉语/搜狗拼音输入法 - 查找字典
+
 ##### reference
 https://github.com/kfcd/chaizi
-
 https://github.com/LingDong-/rrpl
-
 http://www.archchinese.com/  
-
 https://www.hackingchinese.com/kickstart-your-character-learning-with-the-100-most-common-radicals/  
 https://github.com/JianshuZhang/RAN  
 https://github.com/fortyMiles/PAIP-Python/tree/master/eliza  
