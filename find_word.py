@@ -234,17 +234,23 @@ def get_pinyin(input_sentence):
     if len(input_complete_word) > 1:
         out_word = word_component_dict.get(input_complete_word)  # 拆字 - 单字
         if out_word:
-            out_pinyin = pinyin(out_word)[0][0]
-            if out_pinyin != out_word:
-                output = out_word + ': ' + out_pinyin
+            out_pinyin = pinyin(out_word, errors='ignore',heteronym=True)
+            if len(out_pinyin):
+                if len(out_pinyin[0])>1:
+                    output = '这是个多音字哦，' + ' 或 '.join(out_pinyin[0])
+                else:
+                    output = out_word + ': ' + out_pinyin[0][0]
             else:
                 return 'I don\'t know how to pronounce the word!'
         else:
             return 'I can\'t find it in the dictionary!'
     else:
-        out_pinyin = pinyin(input_complete_word)[0][0]  # 单字
-        if out_pinyin != input_complete_word:
-            output = input_complete_word + ': ' + out_pinyin
+        out_pinyin = pinyin(input_complete_word, errors='ignore',heteronym=True)  # 单字
+        if len(out_pinyin):
+            if len(out_pinyin[0]) > 1:
+                output = '这是个多音字哦，' + ' 或 '.join(out_pinyin[0])
+            else:
+                output = input_complete_word + ': ' + out_pinyin[0][0]
         else:
             return 'I don\'t know how to pronounce the word!'
 

@@ -1,16 +1,22 @@
 ####猜字#####
+# “*” 之间必须有一个必选项
 p_0001:
 [*][t_wg_and][**]([t_wg_allin]|)([t_wg_is]|)[t_wg_end]
 [*][t_direction_wg][t_wg_and]([t_wg_num]|)[**]([t_wg_is]|)[t_wg_end]
 ([t_wg_num]|)[*]([t_wg_zi]|)[t_wg_and]([t_wg_num2]|)[**]([t_wg_is]|)[t_wg_end]
+([t_wg_num]|)[*][t_wg_num2][**][t_wg_end]
 [*][t_wg_and][**]([t_direction_wg]|)[t_wg_and2][***][t_wg_end]
 [*]([t_wg_num]|)([t_wg_zi]|)[t_wg_allin][t_wg_end]
 
 
-([*]|)[t_direction_wg]([t_wg_num]|)[**]([t_wg_is]|)[t_wg_end]
-[t_direction_wg][t_direction_wg2]([t_wg_allin]|)([t_wg_is]|)([t_wg_num]|)[**]([t_wg_is]|)[t_wg_end]
+[t_direction_wg]([t_wg_num]|)[*]([t_wg_is]|)[t_wg_end]
+[*][t_direction_wg]([t_wg_num]|)[**]([t_wg_is]|)[t_wg_end]
 
+[t_direction_wg]([t_wg_num]|)[*][t_wg_and]([t_wg_num2]|)[**][t_direction_wg2]([t_wg_num3]|)[***]([t_wg_is4]|)[t_wg_end]
 
+[t_direction_wg][t_direction_wg2]([t_wg_allin]|)([t_wg_is]|)([t_wg_num]|)[*]([t_wg_is]|)[t_wg_end]
+
+[t_direction_wg]([t_wg_is]|)([t_wg_num]|)[**][t_direction_wg2]([t_wg_is2]|)([t_wg_num2]|)[***]([t_wg_is3]|)[t_wg_end]
 ([*]|)[t_direction_wg]([t_wg_is]|)([t_wg_num]|)[**][t_direction_wg2]([t_wg_is2]|)([t_wg_num2]|)[***]([t_wg_is3]|)[t_wg_end]
 
 ([t_wg_num]|)[*][t_direction_wg]([t_wg_num2]|)[**][t_direction_wg2]([t_wg_num3]|)[***]([t_wg_is]|)[t_wg_end]
@@ -20,5 +26,5 @@ p_0001:
 
 
 [*]([t_wg_zi]|)[t_wg_end]
-[*]([t_wg_zi]|)[t_wg_de][**]([t_wg_zi]|)[t_wg_end]
+([t_wg_zi]|)[t_wg_de][*]([t_wg_zi]|)[t_wg_end]
 

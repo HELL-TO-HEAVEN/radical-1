@@ -26,6 +26,7 @@ t_wg_and:
 加
 再加
 
+
 t_wg_and2:
 [t_wg_and]
 
@@ -55,6 +56,8 @@ t_wg_num:
 一个
 二个
 两个
+俩
+俩个
 三个
 四个
 五个
@@ -63,8 +66,10 @@ t_wg_num:
 t_wg_num2:
 [t_wg_num]
 
+
 t_wg_num3:
 [t_wg_num]
+
 
 t_wg_is:
 都是
@@ -82,6 +87,9 @@ t_wg_is2:
 t_wg_is3:
 [t_wg_is]
 
+t_wg_is4:
+[t_wg_is]
+
 t_wg_zi:
 这个字
 字
@@ -95,5 +103,7 @@ t_wg_end:
 怎么读
 怎么念
 什么字
+读音
+拼音
 读音是什么
 拼音是什么

@@ -88,14 +88,26 @@
 
    what's the correlation between the word embedding and radical embedding?
 
-3. Source of radical information
-    https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
+3. IDS - Ideographic Description Sequences
 
-  http://www.archchinese.com/
+    Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
 
-  http://www.chise.org/ids/
+http://www.babelstone.co.uk/Fonts/PUA.html
 
-  http://unicode.org/charts/unihan.html
+https://github.com/cjkvi/cjkvi-ids
+
+https://github.com/LingDong-/rrpl
+
+http://www.chise.org/ids/ - 繁体字
+
+Inspired by: http://bangumi.tv/group/topic/341210
+
+4. Source of radical information
+   https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
+
+   https://en.wikipedia.org/wiki/Kangxi_radical
+
+  [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
 
   https://www.mdbg.net/chinese/dictionary?page=radicals
 
@@ -109,7 +121,12 @@
 ​	居然可以打拼音声调和偏旁部首...
 
 ##### reference
-https://github.com/kfcd/chaizi  
+https://github.com/kfcd/chaizi
+
+https://github.com/LingDong-/rrpl
+
+http://www.archchinese.com/  
+
 https://www.hackingchinese.com/kickstart-your-character-learning-with-the-100-most-common-radicals/  
 https://github.com/JianshuZhang/RAN  
 https://github.com/fortyMiles/PAIP-Python/tree/master/eliza  
