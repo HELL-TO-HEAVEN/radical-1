@@ -106,6 +106,7 @@
    http://www.chise.org/ids/ - 繁体字  
    http://www.chise.org/ids-find/ - IDS检索  
    https://github.com/mskala/chise-ids  
+   https://github.com/tomcumming/chise-ids  
 
    http://www.zdic.net/z/zxjs/ - IDS检索
 
@@ -117,7 +118,9 @@
    Inspired by: http://bangumi.tv/group/topic/341210  
 
 4. Source of radical information
-   https://en.wikipedia.org/wiki/Radical_(Chinese_characters)
+
+   https://en.wikipedia.org/wiki/Radical_(Chinese_characters)  
+   
    https://en.wikipedia.org/wiki/Kangxi_radical
 
    http://www.unicode.org/
@@ -125,6 +128,8 @@
    [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
 
    https://www.mdbg.net/chinese/dictionary?page=radicals
+
+   http://www.archchinese.com/  
 
 ##### other
 百度找字，解析其边界及内部原理：  
@@ -137,10 +142,12 @@
 
 百度汉语/搜狗拼音输入法 - 查找字典
 
-##### reference
-https://github.com/kfcd/chaizi
-https://github.com/LingDong-/rrpl
-http://www.archchinese.com/  
-https://www.hackingchinese.com/kickstart-your-character-learning-with-the-100-most-common-radicals/  
-https://github.com/JianshuZhang/RAN  
+> code source:  
 https://github.com/fortyMiles/PAIP-Python/tree/master/eliza  
+> data source:  
+https://github.com/kfcd/chaizi
+http://babelstone.co.uk/CJK/index.html
+https://github.com/JianshuZhang/RAN  
+https://github.com/LingDong-/rrpl
+https://www.hackingchinese.com/kickstart-your-character-learning-with-the-100-most-common-radicals/  
+
