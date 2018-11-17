@@ -104,17 +104,20 @@
    https://github.com/LingDong-/rrpl
 
    http://www.chise.org/ids/ - 繁体字  
-   http://www.chise.org/ids-find/ - IDS检索  
+   http://www.chise.org/ids-find/ - 偏旁检索（返回多个结果）- 收录较全！  
    https://github.com/mskala/chise-ids  
    https://github.com/tomcumming/chise-ids  
 
-   http://www.zdic.net/z/zxjs/ - IDS检索
+   http://www.zdic.net/z/zxjs/ - IDS检索、偏旁检索
 
-   http://zisea.com/zslf.htm - 两分查字-将字拆为首尾两部
+   http://zisea.com/zslf.htm - 两分(将字拆为首尾两部)、字元、拼音、笔画等四种检索 - 收录较全！
 
    http://zhs.glyphwiki.org/wiki/GlyphWiki:%E9%A6%96%E9%A1%B5  
    http://glyphwiki.org/search/hwr.html - 手书汉字检索
 
+   http://www.unicode.org/  
+   [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
+   
    Inspired by: http://bangumi.tv/group/topic/341210  
 
 4. Source of radical information
@@ -122,12 +125,6 @@
    https://en.wikipedia.org/wiki/Radical_(Chinese_characters)  
    
    https://en.wikipedia.org/wiki/Kangxi_radical
-
-   http://www.unicode.org/
-
-   [Unihan Database Lookup](http://unicode.org/charts/unihan.html)
-
-   https://www.mdbg.net/chinese/dictionary?page=radicals
 
    http://www.archchinese.com/  
 
