@@ -32,7 +32,7 @@
 
 
 ## rule
-[Rules](https://github.com/bifeng/radical/blob/master/Rules.md)
+[pos_rules](https://github.com/bifeng/radical/blob/master/test/pos_rules.md)
 
 
 #### drawback of rules:
