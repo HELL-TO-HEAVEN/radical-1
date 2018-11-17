@@ -17,18 +17,10 @@ t_direction_wg:
 里边
 
 
-t_direction_wg2:
-[t_direction_wg]
-
-
 t_wg_and:
 和
 加
 再加
-
-
-t_wg_and2:
-[t_wg_and]
 
 
 t_wg_allin:
@@ -63,13 +55,6 @@ t_wg_num:
 五个
 六个
 
-t_wg_num2:
-[t_wg_num]
-
-
-t_wg_num3:
-[t_wg_num]
-
 
 t_wg_is:
 都是
@@ -80,15 +65,6 @@ t_wg_is:
 t_wg_de:
 的
 
-
-t_wg_is2:
-[t_wg_is]
-
-t_wg_is3:
-[t_wg_is]
-
-t_wg_is4:
-[t_wg_is]
 
 t_wg_zi:
 这个字
