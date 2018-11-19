@@ -34,10 +34,13 @@ split_con = {'\)\(':')sep(','\)\[':')sep[','\]\(':']sep(','\]\[':']sep['}
 
 def rule_extract(rule, sentence):
     # todo
-    # 1.如果sentence_components有交集，则优先匹配长串。
+    # 1.检查sentence_components中含单字的语义类，如果与其他语义类有交集，则优先匹配长串的语义类。
     # 示例：
-    # t_wg_and:加 与 t_wg_allin:加起来
+    # t_wg_and:加 与 t_wg_allin:加起来，优先匹配`加起来`
     # 2.sentence_components，优先匹配长串（排序）。
+    # 示例：
+    # t_direction_wg: 上、上面，优先匹配`上面`
+    # 3.句子顺序匹配（排序）。
 
     # keep rule order
     for sp,value in split_con.items():
