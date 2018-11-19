@@ -94,7 +94,11 @@
 3. IDS - Ideographic Description Sequences
 
     Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
-
+   
+   https://en.wikipedia.org/wiki/Ideographic_Description_Characters_(Unicode_block)  
+   
+   https://en.wikipedia.org/wiki/Chinese_character_description_language
+   
    http://babelstone.co.uk/CJK/index.html
 
    http://www.babelstone.co.uk/Fonts/PUA.html
