@@ -34,13 +34,27 @@ split_con = {'\)\(':')sep(','\)\[':')sep[','\]\(':']sep(','\]\[':']sep['}
 
 def rule_extract(rule, sentence):
     # todo
+    # rules
+    # 1.[*]\[]-表示必须提取的内容
+    # 2.(|)-表示可能提取的内容
+    # 3.`*`或变量名-可能重复多次
+    # 正确的规则示例：
+    # ([t_wg_num]|)[*]([t_wg_and]|)([t_wg_num]|)[*]([t_wg_is]|)[t_wg_end]
+    # notes: 当前规则待修改.
+    # 4. 匹配的优先级：(|) > [] > [*]
+
+    # sentence_components:
     # 1.检查sentence_components中含单字的语义类，如果与其他语义类有交集，则优先匹配长串的语义类。
     # 示例：
     # t_wg_and:加 与 t_wg_allin:加起来，优先匹配`加起来`
     # 2.sentence_components，优先匹配长串（排序）。
     # 示例：
     # t_direction_wg: 上、上面，优先匹配`上面`
-    # 3.句子顺序匹配（排序）。
+
+    # sentence order ？
+    # 1 - 如果只关心`必须提取的内容`，则不必在乎规则提取的内容再重新构成的句子是否有序
+    # 2 - 如果考虑句子顺序，则首先利用rules提取所有非`*`变量（这些成分可以拼接为一个含`*`的完整句子作为正则表达式A），
+    #     再根据句子各个变量位置调整正则表达式A（各成分）的顺序，最后利用该正则表达式A匹配句子。
 
     # keep rule order
     for sp,value in split_con.items():
