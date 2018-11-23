@@ -71,6 +71,7 @@
 '上下结构都是乂念什么'
 '外面是口,里面是四面,八方这两个字是什么啊'
 '一个草字头两个口地下一个焦去四点底念什么'
+'左边一个火字旁右边一块的块去掉土字旁念什么'
 '左边一个方,右边一个人,人下两点什么字'
 ```
 
@@ -99,8 +100,12 @@
 
 3. IDS - Ideographic Description Sequences
 
-    Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
+   Unicode 组织在 3.0 版本开始，对 CJKV 统一表意文字做了一个新的支持——[表意文字描述序列](https://zh.wikipedia.org/zh-hk/%E8%A1%A8%E6%84%8F%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0%E5%AD%97%E7%AC%A6)（Ideographic Description Sequences，以下简称IDS）。**其目的是利用十二种组合字符，来描述所定义的汉字内部构字部件的相对位置，从而精确表示生僻字（或未被电脑字符集收入的缺字）。**
+    
+   ids_font = {'⿰': '左右', '⿱': '上下', '⿲': '左中右', '⿳': '上中下', '⿴': '全包围', '⿵': '上三包围', '⿶': '下三包围', '⿷': '左三包围', '⿸': '左上', '⿹': '右上', '⿺': '左下', '⿻': '镶嵌'}
 
+   https://baike.baidu.com/item/汉字结构
+   
    https://en.wikipedia.org/wiki/Ideographic_Description_Characters_(Unicode_block)  
    
    https://en.wikipedia.org/wiki/Chinese_character_description_language

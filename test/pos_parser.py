@@ -3,6 +3,7 @@ from pypinyin import pinyin, load_phrases_dict
 from add_new_word_dict import new_word_pinyin_dict, new_word_split_dict#, new_word_pianpang_dict
 import os
 from sklearn.externals import joblib
+import random
 import jieba
 import jieba.posseg as pseg
 jieba.load_userdict(['左 f', '口 n', '日 n','月 n', '年 n','一起 s','米 n'])
@@ -225,6 +226,11 @@ def get_word(input_sentence):
     return complete_str_.replace(' ','')
 
 
+def stye(word, pingyin):
+    sentence = ['哈哈，我知道！' + word + '字的读音是','我认识这个字，它的读音是' + pingyin,'这个字可难不倒我，读音是' + pingyin, '我知道这个字，它是' + pingyin]
+    return random.choice(sentence)
+
+
 def get_pinyin(input_sentence):
     try:
         input_complete_word = get_word(input_sentence)
@@ -239,7 +245,7 @@ def get_pinyin(input_sentence):
                 if len(out_pinyin[0])>1:
                     output = '这是个多音字哦，' + ' 或 '.join(out_pinyin[0])
                 else:
-                    output = out_word + ': ' + out_pinyin[0][0]
+                    output = stye(out_word, out_pinyin[0][0])
             else:
                 return 'I don\'t know how to pronounce the word!'
         else:
@@ -250,7 +256,7 @@ def get_pinyin(input_sentence):
             if len(out_pinyin[0]) > 1:
                 output = '这是个多音字哦，' + ' 或 '.join(out_pinyin[0])
             else:
-                output = input_complete_word + ': ' + out_pinyin[0][0]
+                output = stye(input_complete_word, out_pinyin[0][0])
         else:
             return 'I don\'t know how to pronounce the word!'
 
