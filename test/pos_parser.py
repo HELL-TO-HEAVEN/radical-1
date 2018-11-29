@@ -227,7 +227,10 @@ def get_word(input_sentence):
 
 
 def stye(word, pingyin):
-    sentence = ['哈哈，我知道！' + word + '字的读音是','我认识这个字，它的读音是' + pingyin,'这个字可难不倒我，读音是' + pingyin, '我知道这个字，它是' + pingyin]
+    sentence = ['哈哈，我知道！"' + word + '"的读音是' + pingyin,
+                '我认识"' + word +'"，它的读音是' + pingyin,
+                '这个字可难不倒我，"' + word + '"的读音是' + pingyin,
+                '我知道这个字，"' + word + '"读作' + pingyin]
     return random.choice(sentence)
 
 
